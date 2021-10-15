@@ -2,9 +2,26 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const request = require('request');
+var cors = require('cors');
 
 const port = process.argv.slice(2)[0];
 const app = express();
+
+const corsOpts = {
+  origin: '*',
+
+  methods: [
+    'GET',
+    'POST',
+    'DELETE',
+  ],
+
+  allowedHeaders: [
+    'Content-Type',
+  ],
+};
+
+app.use(cors(corsOpts));
 
 app.use(bodyParser.json());
 
